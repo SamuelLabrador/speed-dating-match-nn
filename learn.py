@@ -21,10 +21,12 @@ test_dataset = dataset.drop(train_dataset.index)
 train_labels = train_dataset.pop('match')
 test_labels = test_dataset.pop('match')
 
-print(len(train_dataset.keys()))
+print('FEATURE SIZE', len(train_dataset.keys()))
+
+
 model = keras.Sequential([
-		keras.layers.Dense(64, activation='relu', input_shape=[len(train_dataset.keys())]),
-		keras.layers.Dense(16, activation='relu'),
+		keras.layers.InputLayer(len(train_dataset.keys())),
+		keras.layers.Dense(94, activation='relu'),
 		keras.layers.Dense(1, activation='sigmoid'),
 	])
 
